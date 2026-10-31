@@ -1,34 +1,4 @@
-# Politechnika Opolska
-## Wydział Informatyki
-
-# Analiza danych przestrzennych
-### Sprawozdanie projektowe
-
-**Prowadzący:** dr inż. Krzysztof Smykała  
-**Autorzy:**
-- Błażej Krasucki — nr albumu: 103885
-- Magdalena Machacka — nr albumu: 103878
-
-**Opole, 2026**
-
----
-
-# Spis treści
-
-1. [Cel projektu](#1-cel-projektu)
-2. [Pobranie danych ze strony Copernicus Browser](#2-pobranie-danych-ze-strony-copernicus-browser)
-3. [Obliczanie NDVI w programie QGIS](#3-obliczanie-ndvi-w-programie-qgis)
-   - [3.1. Utworzenie projektu i wczytanie warstw](#31-utworzenie-projektu-i-wczytanie-warstw)
-   - [3.2. Obliczenie wskaźnika w kalkulatorze rastrów](#32-obliczenie-wskaźnika-w-kalkulatorze-rastrów)
-   - [3.3. Ustawienie skali kolorów](#33-ustawienie-skali-kolorów)
-4. [Interpretacja mapy NDVI](#4-interpretacja-mapy-ndvi)
-5. [Porównanie plików NDVI i NDMI](#5-porównanie-plików-ndvi-i-ndmi)
-   - [5.1. Charakterystyka wskaźników](#51-charakterystyka-wskaźników)
-   - [5.2. Statystyki rastrów](#52-statystyki-rastrów)
-   - [5.3. Analiza korelacji NDVI i NDMI](#53-analiza-korelacji-ndvi-i-ndmi)
-
----
-
+# Program Copernicus - obliczanie NDVI
 # 1. Cel projektu
 
 Celem projektu było obliczenie wskaźnika NDVI (*Normalized Difference Vegetation Index*) na podstawie zobrazowania satelitarnego Sentinel-2 oraz przedstawienie wyniku w programie QGIS. Dodatkowo porównano rastry `NDVI.tif` i `NDMI.tif`, aby określić zależność między wskaźnikiem roślinności a wskaźnikiem wilgotności.
@@ -67,7 +37,7 @@ W programie QGIS utworzono nowy projekt i zapisano go w wybranym katalogu, aby z
 
 Przed przystąpieniem do obliczeń sprawdzono, czy oba rastry obejmują ten sam obszar oraz czy ich rozdzielczość, zasięg i układ pikseli są zgodne.
 
-![Rysunek 3.1. Wczytane rastry B04 i B08 w programie QGIS](images/pasma.png)
+![Rysunek 3.1. Wczytane rastry B04 i B08 w programie QGIS](img/pasma.png)
 
 *Rysunek 3.1. Wczytane rastry B04 i B08 w programie QGIS.*
 
@@ -79,7 +49,7 @@ $$
 NDVI = \frac{B08 - B04}{B08 + B04}
 $$
 
-![Rysunek 3.2. Konfiguracja wyrażenia obliczającego wskaźnik NDVI w Kalkulatorze rastrów programu QGIS](images/calc.png)
+![Rysunek 3.2. Konfiguracja wyrażenia obliczającego wskaźnik NDVI w Kalkulatorze rastrów programu QGIS](img/calc.png)
 
 *Rysunek 3.2. Konfiguracja wyrażenia obliczającego wskaźnik NDVI w Kalkulatorze rastrów programu QGIS.*
 
@@ -89,7 +59,7 @@ Odwołania do rastrów dostosowano do nazw warstw widocznych w projekcie. Plik w
 
 W celu poprawy czytelności uzyskanego wyniku odpowiednio skonfigurowano wizualizację warstwy NDVI. Wybrany gradient barw, w którym niskie wartości wskaźnika reprezentowane są przez odcienie brązowe lub czerwone, wartości pośrednie przez kolor żółty, a wysokie wartości przez odcienie zieleni, ułatwia interpretację wyników i identyfikację obszarów o zróżnicowanej kondycji roślinności.
 
-![Rysunek 3.3. Wizualizacja wskaźnika NDVI z zastosowaniem skali pseudokolorowej](images/colours.png)
+![Rysunek 3.3. Wizualizacja wskaźnika NDVI z zastosowaniem skali pseudokolorowej](img/colours.png)
 
 *Rysunek 3.3. Wizualizacja wskaźnika NDVI z zastosowaniem skali pseudokolorowej.*
 
@@ -155,14 +125,29 @@ Korelacja nie oznacza jednak, że wysoki NDVI powoduje wzrost NDMI. Oba wskaźni
 
 ---
 
-## Spis tabel
+# Mapy wysokorozdzielcze - CIR
 
-- **Tabela 5.1.** Statystyki wartości rastrów NDVI i NDMI.
+## 1. Pobranie danych wysokorozdzielczych z Geoportal.gov.pl
+Pobrano obszar CIR obejmujący wyspę Bolko.
+![](img/pobranie.png)
 
-## Spis rysunków
+## 2. Sprawdzenie czy jest dobry CRS
+![](img/sprawdzenie_crs.png)
 
-- **Rysunek 2.1.** Wybrany teren.
-- **Rysunek 2.2.** Wybrane pasma.
-- **Rysunek 3.1.** Wczytane rastry B04 i B08 w programie QGIS.
-- **Rysunek 3.2.** Konfiguracja wyrażenia obliczającego wskaźnik NDVI w Kalkulatorze rastrów programu QGIS.
-- **Rysunek 3.3.** Wizualizacja wskaźnika NDVI z zastosowaniem skali pseudokolorowej.
+## 3. Obliczenie klastra dla NDVI
+Na zrzucie ekranu brakuje () i nazwy warstwy, które dodano później. 
+![](img/obliczenie_klastra.png)
+
+## 4. Histogram 
+Sprawdzono histogram w celu dopasowania skali kolorów.
+![](img/histogram.png)
+
+## 5. NDVI
+Obliczone NDVI
+![](img/ndvi.png)
+
+Oryginalnego obrazka nie wrzucamy ze względu na rozmiar ~300mb, po konwersji do PNG ~100mb, bo dane wysokorozdzielcze, są naprawdę wysoko rozdzielcze ~9000x9000 px.
+
+## Wnioski 
+
+Za pomocą programu QGIS można w szybki sposób analizować interesujące nas wycinki danych satelitarnych. Program nie jest intuicyjny, ale po przyzwyczajeniu się nie jest taki zły.
