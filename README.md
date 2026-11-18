@@ -3,7 +3,7 @@ Strona laboratoriów i naszego wspaniałego projektu z Analizy Danych Przestrzen
 ---
 # Sprawozdania z labów
 ### [✅] [Sprawozdanie 1](lab1.md)
-### [❌] [Sprawozdanie 2]()
+### [✅] [Sprawozdanie 2](lab2.md)
 ### [❌] [Sprawozdanie 3]()
 
 
