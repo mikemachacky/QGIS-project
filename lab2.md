@@ -6,6 +6,10 @@ Celem ćwiczenia było zapoznanie się z podstawowymi narzędziami biblioteki Ge
 
 ## 2. Tworzenie geometrii
 
+![Schemat punktu Rynku i kwadratowego poligonu](img/lab2_geometries.svg)
+
+*Rysunek 1. Przykładowe geometrie utworzone w notatniku (schemat poglądowy).* 
+
 Za pomocą biblioteki Shapely utworzono punkt odpowiadający Rynkowi w Opolu o współrzędnych (17.9226, 50.6681) oraz poligon kwadratowy. Sprawdzono geometrię punktu względem poligonu — punkt znajduje się wewnątrz kwadratu. Obiekty umieszczono w GeoDataFrame z układem współrzędnych EPSG:4326 (WGS 84). Sprawdzono typy geometrii oraz układ odniesienia.
 
 Pole kwadratu wynosi około 0,0001 stopnia kwadratowego. Jest to jednostka wynikająca z geograficznego układu współrzędnych, a nie pole wyrażone w metrach kwadratowych.
@@ -28,6 +32,14 @@ Dane oczyszczono w następującej kolejności:
 Po czyszczeniu współrzędne obejmowały obszar Opola i okolic. Wartości PM2.5 wynosiły od 9,2 do 35,3, a ich średnia wyniosła 18,86.
 
 ## 5. Utworzenie GeoDataFrame i mapa czujników
+
+![Rozmieszczenie czujników PM2.5](img/lab2_sensors.svg)
+
+*Rysunek 2. Lokalizacje 130 czujników po oczyszczeniu danych; kolor odpowiada wartości pomiaru PM2.5.*
+
+![Histogram pomiarów PM2.5](img/lab2_pm25.svg)
+
+*Rysunek 3. Rozkład oczyszczonych pomiarów PM2.5 (14 przedziałów) i średnia.*
 
 Na podstawie oczyszczonych danych utworzono GeoDataFrame. Geometrię punktową wygenerowano funkcją `points_from_xy`, podając długość geograficzną jako współrzędną X, a szerokość geograficzną jako Y. Warstwie przypisano układ EPSG:4326. Sprawdzono, że wszystkie geometrie są punktami; zasięg danych wynosił od 17,785622 do 18,020378° długości geograficznej oraz od 50,616593 do 50,767895° szerokości geograficznej.
 
